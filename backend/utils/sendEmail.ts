@@ -36,4 +36,4 @@ const sendOrderEmail = async (order: any, userInfo: any) => {
     await transporter.sendMail(mailOptions);
 };
 
-module.exports = sendOrderEmail;
+export default sendOrderEmail;
