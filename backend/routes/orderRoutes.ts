@@ -4,6 +4,7 @@ import Cart from "../models/Cart";
 import Product from "../models/Product";
 import productRouter from "./productRoutes";
 
+import sendOrderEmail from './utils/sendEmail';
 
 const orderRouter = express.Router();
 
@@ -79,7 +80,3 @@ orderRouter.get('/', protect, async (req: Request, res: Response) => {
 )
 
 export default orderRouter
-
-function sendOrderEmail(order: any, user: { user?: { id: string; }; iat?: number; exp?: number; } | undefined) {
-    throw new Error("Function not implemented.");
-}
