@@ -9,7 +9,7 @@ export default function CartPage() {
     const [items, setItems] = useState(cart.items || []);
 
     useEffect(() => setItems(cart.items || []), [cart]);
-
+    console.log(cart.items)
     const handleCheckout = () => {
         navigate("/checkout");
     };
@@ -20,7 +20,7 @@ export default function CartPage() {
             {items.length === 0 ? <p>Your cart is empty</p> : (
                 <>
                     <div>
-                        {items.map(it => <CartItem key={`${it.product}-${it.size}`} item={it} />)}
+                        {items.map((item) => <CartItem key={`${item.product}-${item.size}`} item={item} />)}
                     </div>
                     <div className="cart-summary">
                         <h3>Total: ₹{total}</h3>

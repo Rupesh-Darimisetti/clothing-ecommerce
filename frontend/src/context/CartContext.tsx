@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../services/api";
 import type { CartContextType } from "../types/auth";
-import type { Cart, CartItem } from "../types/card";
+import type { Cart, CartItems } from "../types/card";
 import { AuthContext } from "./AuthContext";
 
 export const CartContext = createContext<CartContextType>({
@@ -44,7 +44,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
                     // send local cart array to backend to merge, backend route: /auth/sync-cart
                     const local = JSON.parse(localStorage.getItem(LOCAL_KEY) || '{"items": []}');
                     await api.post("/auth/sync-cart", {
-                        userId: user.id, guestCart: local.items.map((item: CartItem) => ({
+                        userId: user.id, guestCart: local.items.map((item: CartItems) => ({
                             productId: item.product,
                             name: item.name,
                             size: item.size,
@@ -74,7 +74,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         } else {
             // guest: update local
             setCart((prev) => {
-                const items: CartItem[] = [...prev.items];
+                const items: CartItems[] = [...prev.items];
                 const idx = items.findIndex(item => item.product === productId && item.size === size);
                 if (idx >= 0) items[idx].qty += qty;
                 else items.push({ product: productId, name, size, qty, price: price || 0 });
