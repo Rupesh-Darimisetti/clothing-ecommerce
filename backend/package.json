@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/server.ts",
-    "start:dev": "ts-node src/server.ts",
+    "dev": "nodemon --exec ts-node server.ts",
+    "start:dev": "ts-node server.ts",
     "start": "node dist/server.js",
     "build": "tsc",
     "seed": "node --loader ts-node/esm src/seedProducts.ts"

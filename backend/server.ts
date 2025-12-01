@@ -2,7 +2,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import 'dotenv/config.js';
 import express, { type NextFunction, type Request, type Response } from 'express';
-import connectDB from "./config/db.js";
+import connectDB from './config/db.js';
 import authRouter from './routes/authRoutes.js';
 import cartRouter from "./routes/cartRoutes.js";
 import orderRouter from './routes/orderRoutes.js';
