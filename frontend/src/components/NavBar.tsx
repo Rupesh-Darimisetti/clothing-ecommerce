@@ -11,8 +11,8 @@ export default function Navbar() {
     const count = cart.items.reduce((curr: number, item: OrderItem) => curr + item.qty, 0);
 
     return (
-        <nav className="nav">
-            <div className="nav-left">
+        <nav className="flex ">
+            <div className="flex justify-start">
                 <Link to="/" className="brand">Clothing</Link>
                 <Link to="/products">Products</Link>
             </div>

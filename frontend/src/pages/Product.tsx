@@ -34,10 +34,10 @@ export default function Products() {
             <div className="grid">
                 {products.map(p => <ProductCard key={p._id} product={p} />)}
             </div>
-            <div className="pagination">
-                <button onClick={() => setPage(p => Math.max(1, p - 1))}>Prev</button>
+            <div className="pagination flex justify-between t-5">
+                <button onClick={() => setPage(p => Math.max(1, p - 1))} className="btn">Prev</button>
                 <span>Page {page}</span>
-                <button onClick={() => setPage(p => p + 1)}>Next</button>
+                <button onClick={() => setPage(p => p + 1)} className="btn t-5">Next</button>
             </div>
         </div>
     );
