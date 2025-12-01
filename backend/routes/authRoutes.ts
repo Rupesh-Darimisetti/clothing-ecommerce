@@ -1,6 +1,7 @@
 import express from 'express';
 import { check } from 'express-validator';
-import { login, signup, syncUserCart } from '../controllers/authController.ts';
+import { login, logout, signup, syncUserCart, userDetails } from '../controllers/authController.ts';
+import protect from '../middleware/authMiddleware.ts';
 
 const authRouter = express.Router()
 
@@ -21,8 +22,11 @@ authRouter.post(
         check('password', 'password is required').exists(),
     ],
     login
-)
+);
 
+authRouter.get('/me', protect, userDetails)
+
+authRouter.post('/logout', logout);
 // Endpoint to sync guest cart to user cart on login
 authRouter.post('/sync-cart', syncUserCart)
 

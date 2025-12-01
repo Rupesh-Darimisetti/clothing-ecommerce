@@ -2,11 +2,12 @@ import { type Request, type Response } from "express";
 import Cart from "../models/Cart.ts";
 import Order from "../models/Order.ts";
 import Product from "../models/Product.ts";
+import type { OrderType } from "../types/order.ts";
 import sendOrderEmail from "../utils/sendEmail.ts";
 
 export const placeOrder = async (req: Request, res: Response) => {
     try {
-        const userId = (req as any).user.id;
+        const userId = (req as any).user?.id;
 
         // Find user's cart
         const cart = await Cart.findOne({ user: userId }).populate("items.product");
@@ -45,8 +46,8 @@ export const placeOrder = async (req: Request, res: Response) => {
         );
 
         // Create order
-        const order = await Order.create({
-            user: userId,
+        const order: OrderType = await Order.create({
+            user: (req as any).user,
             items: orderItems,
             totalPrice,
             orderDate: new Date(),

@@ -11,25 +11,45 @@ export default function Navbar() {
     const count = cart.items.reduce((curr: number, item: OrderItem) => curr + item.qty, 0);
 
     return (
-        <nav className="flex ">
-            <div className="flex justify-start">
-                <Link to="/" className="brand">Clothing</Link>
-                <Link to="/products">Products</Link>
+        <nav className="flex items-center justify-between px-6 py-4 bg-white shadow">
+            <div className="flex items-center space-x-6">
+                <Link to="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
+                    Clothing
+                </Link>
+                <Link to="/products" className="text-gray-700 hover:text-gray-500">
+                    Products
+                </Link>
             </div>
-            <div className="nav-right">
-                <Link to="/cart">Cart ({count})</Link>
+
+            <div className="flex items-center space-x-6">
+                <Link to="/cart" className="text-gray-700 hover:text-gray-500">
+                    Cart ({count})
+                </Link>
+
                 {!user ? (
                     <>
-                        <Link to="/login">Login</Link>
-                        <Link to="/register">Register</Link>
+                        <Link to="/login" className="text-gray-700 hover:text-gray-500">
+                            Login
+                        </Link>
+                        <Link to="/register" className="text-gray-700 hover:text-gray-500">
+                            Register
+                        </Link>
                     </>
                 ) : (
                     <>
-                        <span>Hello, {user.name || user.email}</span>
-                        <button onClick={logout}>Logout</button>
+                        <span className="text-gray-700">
+                            Hello, {user.name || user.email}
+                        </span>
+                        <button
+                            onClick={logout}
+                            className="px-3 py-1 bg-gray-800 text-white rounded hover:bg-gray-700"
+                        >
+                            Logout
+                        </button>
                     </>
                 )}
             </div>
         </nav>
+
     );
 }

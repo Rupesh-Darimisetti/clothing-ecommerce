@@ -24,19 +24,35 @@ export default function Checkout() {
     };
 
     return (
-        <div>
-            <h2>Checkout</h2>
-            <div>
+        <div className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow space-y-6">
+            <h2 className="text-2xl font-bold text-gray-900">Checkout</h2>
+
+            <div className="space-y-3">
                 {cart.items.map((item: CartItems) => (
-                    <div key={`${item.product}-${item.size}`}>
-                        <strong>{item.name}</strong> x{item.qty} — ₹{item.price}
+                    <div
+                        key={`${item.product}-${item.size}`}
+                        className="flex justify-between text-gray-700 border-b pb-2"
+                    >
+                        <span className="font-medium">{item.name}</span>
+                        <span>
+                            x{item.qty} — ₹{item.price}
+                        </span>
                     </div>
                 ))}
             </div>
-            <h3>Total: ₹{total}</h3>
-            <button onClick={placeOrder} disabled={loading || cart.items.length === 0}>
+
+            <h3 className="text-xl font-semibold text-gray-900">
+                Total: ₹{total}
+            </h3>
+
+            <button
+                onClick={placeOrder}
+                disabled={loading || cart.items.length === 0}
+                className="w-full py-3 rounded-lg bg-gray-900 text-white font-medium hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            >
                 {loading ? "Placing..." : "Place Order"}
             </button>
         </div>
+
     );
 }

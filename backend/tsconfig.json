@@ -1,39 +1,27 @@
 {
-  // "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    /* Language and Environment */
-    "target": "ES2022", /* Specify ECMAScript target version. */
-    "lib": [
-      "ES2022",
-      "DOM"
-    ], /* Specify libraries to be included in the compilation. 'DOM' is needed for web projects. */
-    "module": "NodeNext", /* Specify module code generation: 'NodeNext' for modern Node.js ES Modules. */
-    "moduleResolution": "NodeNext", /* Resolve modules using Node.js Next algorithm. */
-    "allowImportingTsExtensions": null, /* Allow imports to include `.ts` or `.tsx` extensions in source code. */
-    "verbatimModuleSyntax": true, /* Enable a strict, predictable module syntax. */
-    "jsx": "react-jsx", /* Support JSX in .tsx files (use "preserve" or other options if using a build tool like Babel or SWC). */
-    /* Type Checking */
-    "strict": true, /* Enable all strict type-checking options. Highly recommended. */
-    "noImplicitAny": true, /* Raise error on expressions and declarations with an implicit 'any' type. */
-    "strictNullChecks": true, /* Enable strict null and undefined checks. */
-    "skipLibCheck": true, /* Skip type checking of declaration files (*.d.ts). */
-    /* Output and Source Maps */
-    "outDir": "./dist", /* Redirect output structure to the directory. */
-    "rootDir": "./", /* Specify the root directory of source files. */
-    "sourceMap": true, /* Create source maps for debugging. */
-    "noEmit": false, /* Do not emit output (JS) files (useful if using Babel/Vite for compilation). */
-    /* Interop, Module Resolution, and Other Options */
-    "esModuleInterop": true, /* Emit additional JS to ease compatibility for CommonJS default imports. */
-    "forceConsistentCasingInFileNames": true, /* Ensure that casing is consistent in file names. */
-    "resolveJsonModule": true, /* Include modules imported with ".json" extension. */
-    "allowJs": true /* Allow JavaScript files to be a part of your program. */
+    "target": "ES2020",
+    "module": "CommonJS",
+    "outDir": "./dist",
+    "rootDir": "./",
+    // "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "rewriteRelativeImportExtensions": true,
+    "types": [
+      "node"
+    ],
+    "allowJs": true
   },
   "include": [
-    "./*.ts",
-    "./**/*.ts" /* Specify files to include. */
+    "**/*.ts"
   ],
   "exclude": [
-    "node_modules", /* Specify files to exclude. */
-    "dist"
+    "node_modules"
   ]
 }

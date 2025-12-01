@@ -28,17 +28,36 @@ export default function Products() {
     };
 
     return (
-        <div>
-            <h2>Products</h2>
+        <div className="max-w-7xl mx-auto px-6 py-10 space-y-8">
+            <h2 className="text-3xl font-bold text-gray-900">Products</h2>
+
             <Filters onApply={applyFilters} initial={filters} />
-            <div className="grid">
-                {products.map(p => <ProductCard key={p._id} product={p} />)}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {products.map((p) => (
+                    <ProductCard key={p._id} product={p} />
+                ))}
             </div>
-            <div className="pagination flex justify-between t-5">
-                <button onClick={() => setPage(p => Math.max(1, p - 1))} className="btn">Prev</button>
-                <span>Page {page}</span>
-                <button onClick={() => setPage(p => p + 1)} className="btn t-5">Next</button>
+
+            <div className="flex items-center justify-between pt-6">
+                <button
+                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition disabled:opacity-50"
+                    disabled={page === 1}
+                >
+                    Prev
+                </button>
+
+                <span className="text-gray-700 font-medium">Page {page}</span>
+
+                <button
+                    onClick={() => setPage((p) => p + 1)}
+                    className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition"
+                >
+                    Next
+                </button>
             </div>
         </div>
+
     );
 }

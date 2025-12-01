@@ -4,6 +4,6 @@ import protect from "../middleware/authMiddleware.ts";
 
 const orderRouter = express.Router();
 
-orderRouter.get('/', protect, placeOrder)
+orderRouter.post('/', protect, placeOrder)
 
 export default orderRouter

@@ -74,6 +74,7 @@ export const login = async (req: Request, res: Response) => {
             payload,
             process.env.JWT_SECRET as string,
             { expiresIn: 360000 });
+
         return res.json(token);
     } catch (err: any) {
         console.error(err.message);
@@ -135,3 +136,32 @@ export const syncUserCart = async (req: Request, res: Response) => {
         res.status(500).json({ message: "Error syncing cart" });
     }
 };
+
+/* ====== UserDetail ====== */
+export const userDetails = async (req: Request, res: Response) => {
+    try {
+        const { userId } = (req as any).user?.id;
+
+
+        if (!userId) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        const user = await User.findById(userId).select("-password");
+
+
+        res.status(200).json({ user });
+    } catch (error) {
+        console.error('Error fetching user details:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+/* ===Logout===== */
+export const logout = (req, res) => {
+    const token = req.headers.authorization.split(' ')[1];
+
+    const decodedToken = jwt.decode(token);
+    // const expiresAt = new Date(decodedToken.expiresIn * 100);
+    localStorage.clear(decodedToken)
+    res.status(200).json({ message: 'Logged out successfully' });
+}
