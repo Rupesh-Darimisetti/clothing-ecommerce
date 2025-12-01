@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import api from "../services/api";
+import type { CartItem } from "../types/card";
 
 export default function Checkout() {
     const { cart, total, clearCart } = useContext(CartContext);
@@ -25,9 +26,9 @@ export default function Checkout() {
         <div>
             <h2>Checkout</h2>
             <div>
-                {cart.items.map(i => (
-                    <div key={`${i.product}-${i.size}`}>
-                        <strong>{i.name}</strong> x{i.qty} — ₹{i.price}
+                {cart.items.map((item: CartItem) => (
+                    <div key={`${item.product}-${item.size}`}>
+                        <strong>{item.name}</strong> x{item.qty} — ₹{item.price}
                     </div>
                 ))}
             </div>

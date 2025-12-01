@@ -1,11 +1,5 @@
-import dotenv from 'dotenv';
-import connectDB from './config/db.js';
-import Product from './models/Product.js';
-
-
-dotenv.config()
-
-// const MONGO_URI = process.env.MONGO_URI as string;
+import connectDB from './config/db.ts';
+import Product from './models/Product.ts';
 
 const products = [
     { name: 'Classic White T-Shirt', description: 'Soft cotton tee', price: 19.99, image: '/images/white-tshirt.jpg', category: 'T-Shirts', sizes: ['S', 'M', 'L', 'XL'], stock: 50 },
