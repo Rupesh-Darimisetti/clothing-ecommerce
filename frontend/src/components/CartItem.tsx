@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import type { CartItems } from "../types/card";
 
-export default function CartItem({ item }) {
+export default function CartItem({ item }: { item: CartItems }) {
     const { updateItem, removeItem } = useContext(CartContext);
 
     return (

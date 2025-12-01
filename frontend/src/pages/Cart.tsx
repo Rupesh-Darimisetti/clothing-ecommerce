@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import { CartContext } from "../context/CartContext";
+import type { Cart } from "../types/card";
 
 export default function CartPage() {
     const { cart, total, clearCart } = useContext(CartContext);
     const navigate = useNavigate();
-    const [items, setItems] = useState(cart.items || []);
+    const [items, setItems] = useState<Cart['items']>(cart.items || []);
 
     useEffect(() => setItems(cart.items || []), [cart]);
     console.log(cart.items)

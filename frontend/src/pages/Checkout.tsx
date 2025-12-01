@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import api from "../services/api";
-import type { CartItem } from "../types/card";
+import type { CartItems } from "../types/card";
 
 export default function Checkout() {
     const { cart, total, clearCart } = useContext(CartContext);
@@ -15,8 +15,9 @@ export default function Checkout() {
             const res = await api.post("/orders"); // backend uses protect middleware
             clearCart();
             navigate(`/order/${res.data.orderId}`);
-        } catch (err) {
-            alert(err?.response?.data?.message || "Order failed");
+        } catch (err: unknown) {
+            const error = err as { response?: { data?: { message?: string } } }
+            alert(error?.response?.data?.message || "Order failed");
         } finally {
             setLoading(false);
         }
@@ -26,7 +27,7 @@ export default function Checkout() {
         <div>
             <h2>Checkout</h2>
             <div>
-                {cart.items.map((item: CartItem) => (
+                {cart.items.map((item: CartItems) => (
                     <div key={`${item.product}-${item.size}`}>
                         <strong>{item.name}</strong> x{item.qty} — ₹{item.price}
                     </div>
