@@ -1,5 +1,5 @@
 import { type Request, type Response } from 'express';
-import Product from '../models/Product.js';
+import Product from '../models/Product.ts';
 
 
 

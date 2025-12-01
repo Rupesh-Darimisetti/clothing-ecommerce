@@ -2,8 +2,8 @@ import bcrypt from "bcryptjs";
 import { type Request, type Response } from "express";
 import { validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
-import Cart from "../models/Cart.js";
-import User from "../models/User.js";
+import Cart from "../models/Cart.ts";
+import User from "../models/User.ts";
 
 /* ================================ SIGNUP =============================== */
 export const signup = async (req: Request, res: Response) => {
