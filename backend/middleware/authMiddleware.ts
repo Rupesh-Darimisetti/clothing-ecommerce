@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import User from "../models/User.js";
+import User from "../models/User.ts";
 
 /*
     JWT FORMAT:

@@ -1,6 +1,6 @@
 import express from 'express';
 import { check } from 'express-validator';
-import { login, signup, syncUserCart } from '../controllers/authController.js';
+import { login, signup, syncUserCart } from '../controllers/authController.ts';
 
 const authRouter = express.Router()
 

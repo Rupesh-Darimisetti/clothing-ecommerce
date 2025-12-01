@@ -1,5 +1,5 @@
 import express from 'express';
-import { filterProducts, productById } from '../controllers/productController.js';
+import { filterProducts, productById } from '../controllers/productController.ts';
 const productRouter = express.Router();
 
 // GET /api/products -> search, filter, pagination

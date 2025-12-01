@@ -4,8 +4,8 @@ import {
     deleteItem,
     getUserCart,
     updateItem
-} from '../controllers/cartController.js';
-import protect from '../middleware/authMiddleware.js';
+} from '../controllers/cartController.ts';
+import protect from '../middleware/authMiddleware.ts';
 
 // Middleware to handle both logged-in and guest users
 // const cartMiddleware = (req: Request, res: Response, next: NextFunction) => {

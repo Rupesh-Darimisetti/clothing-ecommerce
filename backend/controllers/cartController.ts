@@ -1,6 +1,6 @@
 import { type Request, type Response } from "express";
-import Cart from "../models/Cart.js";
-import Product from "../models/Product.js";
+import Cart from "../models/Cart.ts";
+import Product from "../models/Product.ts";
 
 // ------------------------
 // GET /api/cart
