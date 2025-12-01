@@ -5,7 +5,10 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5000,
-    open: true
+    port: 3000,
+    open: true,
+    cors: {
+      origin: "https://clothing-ecommerce-backend-lfma.onrender.com"
+    }
   }
 })
