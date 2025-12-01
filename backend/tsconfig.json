@@ -19,7 +19,7 @@
     "skipLibCheck": true, /* Skip type checking of declaration files (*.d.ts). */
     /* Output and Source Maps */
     "outDir": "./dist", /* Redirect output structure to the directory. */
-    "rootDir": "./src", /* Specify the root directory of source files. */
+    "rootDir": "./", /* Specify the root directory of source files. */
     "sourceMap": true, /* Create source maps for debugging. */
     "noEmit": false, /* Do not emit output (JS) files (useful if using Babel/Vite for compilation). */
     /* Interop, Module Resolution, and Other Options */
